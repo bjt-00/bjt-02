@@ -11,4 +11,46 @@
   		<version>7.0</version>
   	</dependency>
   </dependencies>
+  
+  <build>
+  	<plugins>
+		<plugin>
+		  <groupId>net.wasdev.wlp.maven.plugins</groupId>
+		  <artifactId>liberty-maven-plugin</artifactId>
+		  <version>2.4.2</version>
+		  <configuration>
+		    <assemblyArtifact>
+		      <groupId>io.openliberty</groupId>
+		      <artifactId>openliberty-runtime</artifactId>
+		      <version>18.0.0.2</version>
+		      <type>zip</type>
+		    </assemblyArtifact>
+		    <packageFile>target/embedded-liberty.jar</packageFile>
+		    <include>runnable</include>
+		    <looseApplication>false</looseApplication>
+		    <installAppPackages>project</installAppPackages>
+		  </configuration>
+		 <executions>
+		  <execution>
+		   <id>install-liberty</id>
+		   <phase>prepare-package</phase>
+		   <goals>
+		    <goal>install-server</goal>
+		    <goal>create-server</goal>
+		    <goal>install-feature</goal>
+		   </goals>
+		  </execution>
+		  <execution>
+		   <id>embed-liberty</id>
+		   <phase>package</phase>
+		   <goals>
+		    <goal>install-apps</goal>
+		    <goal>package-server</goal>
+		   </goals>
+		  </execution>
+		 </executions>
+		</plugin>
+	 </plugins>
+  </build>
+	
 </project>

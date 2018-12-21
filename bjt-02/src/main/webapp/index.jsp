@@ -8,5 +8,9 @@
 </head>
 <body>
 JSP and Servlet training
+
+<ol>
+	<li><a href="rest/user">User Rest</a></li>
+</ol>
 </body>
 </html>
